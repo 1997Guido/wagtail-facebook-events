@@ -2,6 +2,7 @@ from django.urls import path
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 from wagtail_facebook_events.views import ImportEventsView
+from django.conf import settings
 
 
 @hooks.register("register_admin_urls")
@@ -15,7 +16,7 @@ def register_admin_urls():
 def register_import_events_menu_item():
     return MenuItem(
         "Import Events",
-        "/admin/import-events/",
+        "/" + settings.WAGTAIL_ADMIN_URL + "import-events/",
         icon_name="date",
         order=10000,
     )
