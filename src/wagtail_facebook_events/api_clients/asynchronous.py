@@ -5,7 +5,7 @@ import httpx
 from wagtail_facebook_events.api_clients import BaseFacebookAPIClient
 
 
-class FacebookEventsAPI(BaseFacebookAPIClient):
+class AsyncFacebookEventsAPI(BaseFacebookAPIClient):
     async def get(self, fields: List[str] = None, limit: int = 25) -> Dict[str, Any]:
         """Asynchronously fetches a list of upcoming events with the specified fields and limit."""
         if fields is None:

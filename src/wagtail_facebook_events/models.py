@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.fields import RichTextField
-
+from wagtail_facebook_events.importers.sync import FacebookEventsImporterSync
 
 class FacebookEvent(models.Model):
     """FacebookEvent model."""
