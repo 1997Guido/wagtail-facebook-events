@@ -1,0 +1,18 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.flex-container .box {
+    flex: 1;
+    padding: 1rem;
+    background-color: #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.flex-container .box:nth-child(even) {
+    background-color: #bbb;
+}

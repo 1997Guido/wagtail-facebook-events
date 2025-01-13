@@ -1,0 +1,57 @@
+{% extends "wagtailadmin/base.html" %}
+{% load i18n wagtailadmin_tags static %}
+
+{% block titletag %}
+    {% trans "Facebook Events Dashboard" %}
+{% endblock %}
+
+{% block content %}
+<div class="section">
+    <header class="header">
+        <h1>{% trans "Facebook Events Dashboard" %}</h1>
+    </header>
+
+    <div class="actions">
+        <form method="post" action="{% url 'wagtail_facebook_events:import_events' %}">
+            {% csrf_token %}
+            <button type="submit" class="button button-long">
+                {% trans "Import Events" %}
+            </button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <h2>{% trans "Imported Events" %}</h2>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th>{% trans "Event Name" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Location" %}</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.date|date:"D M Y, H:i" }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>
+                            <a href="{{ event.edit_url }}" class="button button-secondary">
+                                {% trans "Edit" %}
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">
+                            {% trans "No events imported yet." %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

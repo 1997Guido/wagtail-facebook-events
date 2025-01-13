@@ -6,7 +6,7 @@ def get_setting(name: str, default=None):
 
 
 IMPORTER = get_setting(
-    "IMPORTER", "wagtail_facebook_events.importers.sync.FacebookEventsImporterSync"
+    "IMPORTER", "wagtail_facebook_events.importers.fake.FacebookEventsImporterFake"
 )
 EVENT_MODEL = get_setting("EVENT_MODEL", "wagtail_facebook_events.FacebookEvent")
 EVENT_SERIALIZER = get_setting(
